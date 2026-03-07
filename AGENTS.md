@@ -2,7 +2,7 @@
 
 ## Project Structure & Module Organization
 This repository is a static marketing/documentation site for HandelScore.
-- Root HTML pages: `index.html`, `funktionen.html`, `api.html`, `kontakt.html`, `impressum.html`, `datenschutz.html`, `agb.html`
+- Root HTML pages: `index.html`, `loesung.html`, `api.html`, `kontakt.html`, `impressum.html`, `datenschutz.html`, `agb.html`
 - Shared styling: `assets/styles.css`
 - Static media: `static/img/...` (logo and image assets)
 - Domain config: `CNAME`
@@ -19,6 +19,7 @@ Open `http://localhost:8000` to validate navigation and linked assets.
 
 ## Coding Style & Naming Conventions
 - Use semantic HTML5 (`header`, `main`, `section`, `footer`) and keep pages in German unless a section is explicitly English (for technical API terms).
+- On all German-language pages, use proper German umlauts (`ä`, `ö`, `ü`) and `ß` in visible copy instead of ASCII substitutions like `ae`, `oe`, `ue`, or `ss` where standard spelling requires them.
 - Follow existing indentation: 4 spaces in HTML/CSS.
 - Reuse CSS custom properties in `:root` and existing utility classes (`.container`, `.section`, `.btn`) before adding new variants.
 - File names use lowercase, hyphen-free patterns already established (e.g., `kontakt.html`).
