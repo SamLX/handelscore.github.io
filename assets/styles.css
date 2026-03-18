@@ -592,6 +592,43 @@ strong {
   margin: 0 auto;
 }
 
+.pricing-grid {
+  align-items: stretch;
+}
+
+.price-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.price-value {
+  margin-bottom: 0.75rem;
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 2vw + 1.2rem, 2.75rem);
+  line-height: 1.1;
+  color: var(--primary-color);
+}
+
+.price-value span {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.price-meta {
+  color: var(--text-main);
+  font-weight: 600;
+}
+
+.price-note {
+  font-size: 0.9rem;
+}
+
+.price-card .btn {
+  margin-top: auto;
+}
+
 /* Contact Form */
 .form-group {
   margin-bottom: 1.5rem;
