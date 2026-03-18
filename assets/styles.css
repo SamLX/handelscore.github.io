@@ -419,21 +419,25 @@ strong {
 .badge-green {
   background-color: rgba(16, 185, 129, 0.1);
   color: var(--color-green);
+  white-space: nowrap;
 }
 
 .badge-yellow {
   background-color: rgba(245, 158, 11, 0.1);
   color: var(--color-yellow);
+  white-space: nowrap;
 }
 
 .badge-red {
   background-color: rgba(239, 68, 68, 0.1);
   color: var(--color-red);
+  white-space: nowrap;
 }
 
 .badge-gray {
   background-color: rgba(148, 163, 184, 0.14);
   color: var(--color-gray);
+  white-space: nowrap;
 }
 
 /* Cards & Grids */
