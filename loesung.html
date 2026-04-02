@@ -96,9 +96,9 @@
                         Freigaben im Rahmen Ihrer internen Prüfung.</p>
                     <ul
                         style="list-style-type: disc; margin-left: 1.5rem; color: var(--text-muted); font-size: 0.875rem;">
-                        <li><strong>Nicht freigeben</strong> bei eröffneten oder besonders kritischen Insolvenzsignalen</li>
-                        <li><strong>Nur mit Absicherung</strong> bei unklarer oder vorsichtiger Einordnung</li>
-                        <li><strong>Freigeben</strong> bei unauffälligem Ergebnis ohne kritische Signale</li>
+                        <li><strong>Nicht freigeben</strong> bei eröffneten Verfahren, vorläufigem Insolvenzverwalter oder ähnlich kritischen amtlichen Signalen</li>
+                        <li><strong>Nur mit Absicherung</strong> bei unklarer Datenlage, mehrdeutiger Zuordnung oder vorsichtiger Einordnung</li>
+                        <li><strong>Freigeben</strong> wenn im Rahmen der Prüfung keine amtlichen Insolvenzsignale gefunden wurden</li>
                     </ul>
                 </div>
             </div>
@@ -145,7 +145,7 @@
                         <h3>Erklärung der Felder</h3>
                         <p><strong>Decision:</strong> maschinell verarbeitbarer Hinweiscode: <code>PROCEED</code>, <code>PROCEED_WITH_PROTECTION</code> oder <code>DO_NOT_PROCEED</code>.</p>
                         <p><strong>Score (0-100):</strong> numerischer Integrationswert zur technischen und fachlichen Einordnung.</p>
-                        <p><strong>Data Coverage:</strong> Qualität der Datengrundlage (VERIFIED, INSUFFICIENT, NO_DATA).</p>
+                        <p><strong>Data Coverage:</strong> Qualität der Datengrundlage (z. B. VERIFIED bei klarer Einordnung, INSUFFICIENT bei vorsichtiger oder mehrdeutiger Lage).</p>
                         <p><strong>Risk Color:</strong> visuelle Einordnung für Oberflächen (Grün, Gelb, Rot).</p>
                         <p><strong>Confidence (0.0-1.0):</strong> relative Stabilität der Einordnung auf Basis verfügbarer Signale.</p>
                         <p><strong>Explanation:</strong> strukturierte Begründung mit Summary-Code und Faktoren.</p>
@@ -174,26 +174,20 @@
                         <tr>
                             <td><span class="badge badge-green">0 - 14</span></td>
                             <td><strong>PROCEED</strong></td>
-                            <td>Keine kritischen Insolvenzsignale im aktuellen Prüfmodell, z. B. wenn für das Unternehmen keine verwertbaren negativen Veröffentlichungen vorliegen.</td>
+                            <td>Im Rahmen der Prüfung wurden keine amtlichen Insolvenzsignale gefunden. Das gilt sowohl für klar unauffällige Treffer als auch für Fälle, in denen für die USt-IdNr. keine amtlichen Insolvenzveröffentlichungen gefunden wurden.</td>
                             <td>Freigeben nach interner Richtlinie und menschlicher Prüfung</td>
                         </tr>
                         <tr>
                             <td><span class="badge badge-yellow">15 - 69</span></td>
                             <td><strong>PROCEED_WITH_PROTECTION</strong></td>
-                            <td>Vorsichtige Einordnung, z. B. bei veröffentlichten Hinweisen auf einen Insolvenzantrag, älteren oder schwächeren Insolvenzsignalen, Schutzmaßnahmen, unklarer Datenlage oder wenn keine automatische Freigabe möglich ist.</td>
+                            <td>Vorsichtige Einordnung, z. B. bei aktueller, aber nicht eindeutig kritischer Signallage, bei begrenzter Datengrundlage oder wenn mehrere Firmen zu einer USt-IdNr. passen und die Zuordnung manuell bestätigt werden sollte.</td>
                             <td>Nur mit Absicherung, Vorkasse oder kurzer manueller Prüfung</td>
                         </tr>
                         <tr>
                             <td><span class="badge badge-red">70+</span></td>
                             <td><strong>DO_NOT_PROCEED</strong></td>
-                            <td>Kritische Insolvenzsignale oder harte Stop-Regeln, z. B. eröffnetes Insolvenzverfahren, Abweisung mangels Masse oder Bestellung eines vorläufigen Insolvenzverwalters zur Sicherung des Vermögens.</td>
+                            <td>Kritische amtliche Insolvenzsignale oder harte Stop-Regeln, z. B. eröffnetes Insolvenzverfahren, Einstellung mangels Masse oder Bestellung eines vorläufigen Insolvenzverwalters zur Sicherung des Vermögens.</td>
                             <td>Nicht freigeben, sofern die interne Prüfung dies bestätigt</td>
-                        </tr>
-                        <tr>
-                            <td><span class="badge badge-gray">40</span></td>
-                            <td><strong>NO_DATA</strong></td>
-                            <td>Keine verlässliche Datengrundlage für eine automatische Einordnung, z. B. wenn keine belastbare Zuordnung oder keine auswertbaren Veröffentlichungen vorliegen.</td>
-                            <td>Kurze manuelle Prüfung oder zusätzliche Absicherung</td>
                         </tr>
                     </tbody>
                 </table>
