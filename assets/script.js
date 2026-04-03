@@ -43,7 +43,6 @@ function buildHeader(page) {
                 </a>
                 <nav class="nav-links">
                     <a href="index.html" class="${page === 'home' ? 'active' : ''}">Startseite</a>
-                    <a href="loesung.html" class="${page === 'loesung' ? 'active' : ''}">Lösung</a>
                     <a href="kontakt.html" class="btn btn-primary ${page === 'kontakt' ? 'active' : ''}">Kontakt</a>
                 </nav>
             </div>
@@ -62,10 +61,10 @@ function buildFooter() {
                     <p style="max-width: 300px;">Regelbasiertes Risikosignal für Unternehmen per USt-IdNr. für B2B-Prüfprozesse.</p>
                 </div>
                 <div>
-                    <h4>Produkt</h4>
+                    <h4>Navigation</h4>
                     <ul>
                         <li><a href="index.html">Startseite</a></li>
-                        <li><a href="loesung.html">Lösung</a></li>
+                        <li><a href="kontakt.html">Kontakt</a></li>
                     </ul>
                 </div>
                 <div>
