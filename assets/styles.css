@@ -991,6 +991,70 @@ textarea.form-control {
     font-size: 0.75rem;
   }
 
+  .score-table-wrap {
+    overflow-x: visible;
+    border: none;
+    border-radius: 0;
+    background: transparent;
+    box-shadow: none;
+  }
+
+  .score-table {
+    min-width: 0;
+  }
+
+  .score-table thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  .score-table,
+  .score-table tbody,
+  .score-table tr,
+  .score-table td {
+    display: block;
+  }
+
+  .score-table tbody {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .score-table tbody tr {
+    border: 1px solid #dbe4ee;
+    border-radius: var(--radius-lg);
+    background: linear-gradient(180deg, #ffffff 0%, #fbfdff 100%);
+    box-shadow: 0 10px 24px -18px rgb(26 43 60 / 55%), 0 2px 8px -4px rgb(26 43 60 / 18%);
+    overflow: hidden;
+  }
+
+  .score-table tbody tr:nth-child(even) {
+    background: linear-gradient(180deg, #ffffff 0%, #fbfdff 100%);
+  }
+
+  .score-table tbody td {
+    display: grid;
+    gap: 0.35rem;
+    padding: 0.9rem 1rem;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  .score-table tbody td::before {
+    content: attr(data-label);
+    color: var(--text-main);
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
   /* Footer */
   .footer {
     padding: 1.5rem 0 1.5rem;
