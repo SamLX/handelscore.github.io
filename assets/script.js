@@ -30,6 +30,8 @@ document.addEventListener('DOMContentLoaded', () => {
             mobileBtn.classList.toggle('is-active');
         });
     }
+
+    initScreenshotLightbox();
 });
 
 function buildHeader(page) {
@@ -82,4 +84,80 @@ function buildFooter() {
             </div>
         </footer>
     `;
+}
+
+function initScreenshotLightbox() {
+    const screenshotCards = document.querySelectorAll('.screenshot-card');
+
+    if (!screenshotCards.length) {
+        return;
+    }
+
+    const overlay = document.createElement('div');
+    overlay.className = 'lightbox-overlay';
+    overlay.setAttribute('aria-hidden', 'true');
+    overlay.innerHTML = `
+        <div class="lightbox-dialog" role="dialog" aria-modal="true" aria-label="Bildvorschau">
+            <button class="lightbox-close" type="button" aria-label="Bildvorschau schliessen">&times;</button>
+            <figure class="lightbox-figure">
+                <img class="lightbox-image" alt="">
+                <figcaption class="lightbox-caption"></figcaption>
+            </figure>
+        </div>
+    `;
+
+    document.body.appendChild(overlay);
+
+    const dialog = overlay.querySelector('.lightbox-dialog');
+    const image = overlay.querySelector('.lightbox-image');
+    const caption = overlay.querySelector('.lightbox-caption');
+    const closeButton = overlay.querySelector('.lightbox-close');
+
+    const closeLightbox = () => {
+        overlay.classList.remove('is-open');
+        overlay.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('lightbox-open');
+        image.removeAttribute('src');
+        caption.textContent = '';
+    };
+
+    screenshotCards.forEach((card) => {
+        card.addEventListener('click', (event) => {
+            event.preventDefault();
+
+            const preview = card.querySelector('img');
+            const previewCaption = card.querySelector('figcaption');
+
+            if (!preview) {
+                return;
+            }
+
+            image.src = card.href;
+            image.alt = preview.alt || '';
+            caption.textContent = previewCaption ? previewCaption.textContent.trim() : '';
+
+            overlay.classList.add('is-open');
+            overlay.setAttribute('aria-hidden', 'false');
+            document.body.classList.add('lightbox-open');
+            closeButton.focus();
+        });
+    });
+
+    closeButton.addEventListener('click', closeLightbox);
+
+    overlay.addEventListener('click', (event) => {
+        if (event.target === overlay) {
+            closeLightbox();
+        }
+    });
+
+    dialog.addEventListener('click', (event) => {
+        event.stopPropagation();
+    });
+
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && overlay.classList.contains('is-open')) {
+            closeLightbox();
+        }
+    });
 }
