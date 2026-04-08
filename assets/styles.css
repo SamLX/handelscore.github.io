@@ -1053,9 +1053,9 @@ textarea.form-control {
   }
 
   .process-node {
-    grid-template-columns: 1fr;
+    grid-template-columns: auto 1fr;
     gap: 0.8rem;
-    align-items: flex-start;
+    align-items: center;
   }
 
   .process-icon {
