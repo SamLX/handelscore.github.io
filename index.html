@@ -97,7 +97,7 @@
                     <h3>Standard-Abonnement</h3>
                     <p>Für Teams, die HandelScore mit einem klar kalkulierbaren monatlichen Volumen einsetzen möchten.</p>
                     <div class="price-value">25,00 € <span>pro Monat</span></div>
-                    <p class="price-meta">Inklusive bis zu 1.000 Anfragen pro Monat.</p>
+                    <p class="price-meta">Inklusive bis zu 1.000 Risikoprüfungen pro Monat.</p>
                     <p class="price-note">Gemäß § 19 UStG wird keine Umsatzsteuer ausgewiesen.</p>
                 </div>
                 <div class="card price-card">
@@ -167,14 +167,14 @@
 
                 <div class="grid-2">
                     <div class="card">
-                        <h3>Prüfung im Bestellprozess</h3>
-                        <p>Prüfen Sie Geschäftspartner vor größeren Aufträgen und reduzieren Sie Risiken im laufenden
-                            B2B-Bestellgeschäft.</p>
+                        <h3>Prüfung direkt an der Bestellung</h3>
+                        <p>Im Shopware-Admin kann die Risikoprüfung unmittelbar für einen konkreten Auftrag gestartet
+                            werden, inklusive Order-Kontext, Kundendaten und USt-IdNr.</p>
                         <ul
                             style="list-style-type: disc; margin-left: 1.5rem; color: var(--text-muted); font-size: 0.875rem;">
-                            <li>Standardisierte Prüfung bei Neukunden</li>
-                            <li>Einordnung bei ungewöhnlich großen Bestellungen</li>
-                            <li>Standardisiertes Risikosignal für interne Regeln</li>
+                            <li>Action-Button im Order-Detail</li>
+                            <li>Modal mit lokalisierter Ergebnisanzeige</li>
+                            <li>Strukturiertes Ergebnis für interne Regeln</li>
                         </ul>
                     </div>
                     <div class="card">
@@ -307,16 +307,19 @@
                         <h3>Beispiel einer Antwort</h3>
                         <div class="code-block" style="margin-top: 1rem;">
                             <code>{
-  "score": 70,
+  "score": 88,
   "decision": "DO_NOT_PROCEED",
-  "dataCoverage": "VERIFIED",
   "riskColor": "RED",
-  "confidence": 0.67,
+  "dataCoverage": "VERIFIED",
+  "confidence": 1.0,
   "appliedHardRules": [
-    "RULE_PROCEEDINGS_OPENED_MIN_E"
+    "RULE_PROCEEDINGS_OPENED_MIN_E",
+    "RULE_REPEATED_DECISIONS_IN_PROCEEDINGS_MIN_E"
   ],
-  "calculatedAt": "2026-03-06T10:15:30Z",
+  "calculatedAt": "2026-04-08T09:14:22Z",
   "formulaVersion": "v2.1-smb-decision-aligned-score",
+  "decisionModifier": "FORMAL_INSOLVENCY_PROCEEDINGS",
+  "recommendedTerms": "NO_UNSECURED_TRADE_CREDIT",
   "explanation": {
     "summary": "PROCEEDINGS_OPENED",
     "factors": [
@@ -325,22 +328,36 @@
         "impact": "HIGH"
       },
       {
+        "type": "REPEATED_COURT_DECISIONS",
+        "impact": "HIGH"
+      },
+      {
         "type": "RECENT_INSOLVENCY_EVENT",
         "impact": "MEDIUM"
       }
-    ]
+    ],
+    "note": null,
+    "matchedCompanies": null
   }
 }</code>
                         </div>
                     </div>
                     <div class="card">
                         <h3>Erklärung der Felder</h3>
-                        <p><strong>Decision:</strong> maschinell verarbeitbarer Hinweiscode: <code>PROCEED</code>, <code>PROCEED_WITH_PROTECTION</code> oder <code>DO_NOT_PROCEED</code>.</p>
-                        <p><strong>Score (0-100):</strong> numerischer Integrationswert zur technischen und fachlichen Einordnung.</p>
-                        <p><strong>Data Coverage:</strong> Qualität der Datengrundlage (z. B. VERIFIED bei klarer Einordnung, INSUFFICIENT bei vorsichtiger oder mehrdeutiger Lage).</p>
-                        <p><strong>Risk Color:</strong> visuelle Einordnung für Oberflächen (Grün, Gelb, Rot).</p>
-                        <p><strong>Confidence (0.0-1.0):</strong> relative Stabilität der Einordnung auf Basis verfügbarer Signale.</p>
-                        <p><strong>Explanation:</strong> strukturierte Begründung mit Summary-Code und Faktoren.</p>
+                        <p><strong>Decision, Score, Risk Color, Data Coverage:</strong> maschinell auswertbarer Kern
+                            der Entscheidung. Im gezeigten Beispiel steht <code>VERIFIED</code> für eine klare,
+                            belastbare Datengrundlage ohne Mehrdeutigkeit bei der Zuordnung.</p>
+                        <p><strong>Applied Hard Rules:</strong> dokumentiert harte deterministische Regeln, die das
+                            Ergebnis fachlich nach oben begrenzen oder auf Rot eskalieren.</p>
+                        <p><strong>Decision Modifier und Recommended Terms:</strong> zusätzliche fachliche Einordnung
+                            für den Folgeprozess, etwa formale Insolvenzverfahren oder die Empfehlung, nur manuell zu
+                            prüfen beziehungsweise keinen ungesicherten Handelskredit zu gewähren.</p>
+                        <p><strong>Confidence:</strong> relative Stabilität der Einordnung. Im Direct-API-Result kommt
+                            dieser Wert als numerischer Wert im Bereich <code>0.0</code> bis <code>1.0</code>.</p>
+                        <p><strong>Explanation:</strong> deterministische Begründung mit Summary-Code und Faktoren.
+                            <code>note</code> und <code>matchedCompanies</code> bleiben in diesem Beispiel
+                            <code>null</code>, weil der Treffer klar und ohne konkurrierende Unternehmenszuordnung
+                            bewertet wurde.</p>
                     </div>
                 </div>
             </div>
@@ -421,8 +438,9 @@
                         <p>Nein. HandelScore ist ein ergänzendes B2B-Risikosignal auf Basis veröffentlichter Unternehmenssignale und ersetzt keine klassische Bonitätsauskunft oder Einzelfallprüfung.</p>
                     </div>
                     <div class="card">
-                        <h3>Wie schnell ist die Prüfung?</h3>
-                        <p>Eine Bewertung erfolgt typischerweise in wenigen hundert Millisekunden und eignet sich damit auch für eingebettete Prüfungen im Bestell- oder Onboarding-Workflow.</p>
+                        <h3>Welche USt-IdNrn. werden derzeit unterstützt?</h3>
+                        <p>Die aktuelle Risikoprüfung unterstützt deutsche USt-IdNrn. mit Präfix <code>DE</code>.
+                            Andere Präfixe werden im aktuellen Backend bewusst mit technischem Fehlercode abgewiesen.</p>
                     </div>
                     <div class="card">
                         <h3>Für wen ist HandelScore gedacht?</h3>
@@ -443,6 +461,9 @@
                     <p>HandelScore richtet sich ausschließlich an Unternehmen und sonstige juristische Personen im
                         B2B-Kontext. Die Lösung ist nicht für Verbraucher, natürliche Personen oder personenbezogene
                         Bonitätsentscheidungen bestimmt.</p>
+                    <p>Die aktuell implementierte Risikoprüfung ist auf deutsche USt-IdNrn. mit Präfix
+                        <code>DE</code> ausgelegt und fokussiert auf offizielle Insolvenzsignale im beschriebenen
+                        Scope.</p>
                     <p>Das Ergebnis ist eine unterstützende Einordnungshilfe und keine alleinige Entscheidungsgrundlage.
                         Es ersetzt keine rechtliche, kaufmännische, Bonitäts- oder Compliance-Prüfung im Einzelfall.</p>
                     <p>Vollständigkeit und Aktualität hängen von der Verfügbarkeit der verwendeten öffentlichen Quellen ab.
