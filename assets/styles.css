@@ -937,6 +937,10 @@ textarea.form-control {
   color: inherit;
 }
 
+.footer-tagline {
+  max-width: 300px;
+}
+
 .footer-grid {
   display: grid;
   grid-template-columns: 2fr 1fr 1fr;
@@ -1193,6 +1197,11 @@ textarea.form-control {
 
   .footer-grid > :first-child {
     grid-column: 1 / -1;
+  }
+
+  .footer-tagline {
+    max-width: none;
+    width: 100%;
   }
 
   .footer-logo {

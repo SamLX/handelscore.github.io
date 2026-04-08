@@ -60,7 +60,7 @@ function buildFooter() {
                     <a href="index.html" class="footer-logo">
                         <span>Handel<span class="brand-accent">Score</span></span>
                     </a>
-                    <p style="max-width: 300px;">Regelbasiertes Risikosignal für Unternehmen per USt-IdNr. für B2B-Prüfprozesse.</p>
+                    <p class="footer-tagline">Regelbasiertes Risikosignal für Unternehmen per USt-IdNr. für B2B-Prüfprozesse.</p>
                 </div>
                 <div>
                     <h4>Navigation</h4>
