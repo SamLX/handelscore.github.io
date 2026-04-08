@@ -38,14 +38,14 @@ function buildHeader(page) {
     return `
         <header class="header">
             <div class="container nav-container">
-                <a href="index.html" class="logo">
+                <a href="/" class="logo">
                     <img src="assets/img/logo/logo_bg_m.png" alt="" aria-hidden="true"
                         onerror="this.src=''; this.alt='HandelScore Logo';">
                     <span>Handel<span class="brand-accent">Score</span></span>
                 </a>
                 <nav class="nav-links">
-                    <a href="index.html" class="${page === 'home' ? 'active' : ''}">Startseite</a>
-                    <a href="kontakt.html" class="btn btn-primary ${page === 'kontakt' ? 'active' : ''}">Kontakt</a>
+                    <a href="/" class="${page === 'home' ? 'active' : ''}">Startseite</a>
+                    <a href="/kontakt.html" class="btn btn-primary ${page === 'kontakt' ? 'active' : ''}">Kontakt</a>
                 </nav>
             </div>
         </header>
@@ -57,7 +57,7 @@ function buildFooter() {
         <footer class="footer">
             <div class="container footer-grid">
                 <div>
-                    <a href="index.html" class="footer-logo">
+                    <a href="/" class="footer-logo">
                         <span>Handel<span class="brand-accent">Score</span></span>
                     </a>
                     <p class="footer-tagline">Regelbasiertes Risikosignal für Unternehmen per USt-IdNr. für B2B-Prüfprozesse.</p>
@@ -65,16 +65,16 @@ function buildFooter() {
                 <div>
                     <h4>Navigation</h4>
                     <ul>
-                        <li><a href="index.html">Startseite</a></li>
-                        <li><a href="kontakt.html">Kontakt</a></li>
+                        <li><a href="/">Startseite</a></li>
+                        <li><a href="/kontakt.html">Kontakt</a></li>
                     </ul>
                 </div>
                 <div>
                     <h4>Rechtliches</h4>
                     <ul>
-                        <li><a href="agb.html">AGB</a></li>
-                        <li><a href="datenschutz.html">Datenschutz</a></li>
-                        <li><a href="impressum.html">Impressum</a></li>
+                        <li><a href="/agb.html">AGB</a></li>
+                        <li><a href="/datenschutz.html">Datenschutz</a></li>
+                        <li><a href="/impressum.html">Impressum</a></li>
                     </ul>
                 </div>
             </div>
