@@ -49,7 +49,7 @@
                 </p>
                 <div class="btn-group">
                     <a href="/kontakt.html" class="btn btn-primary">Kontakt aufnehmen</a>
-                    <a href="#bewertungsbeispiel" class="btn btn-outline">Beispiel ansehen</a>
+                    <a href="#entscheidungsmodell" class="btn btn-outline">Entscheidungsmodell</a>
                 </div>
             </div>
             <div class="hero-visual">
@@ -335,71 +335,7 @@
             </div>
         </section>
 
-        <section class="section section-alt" id="bewertungsbeispiel">
-            <div class="container">
-                <h2 class="text-center" style="margin-bottom: 3rem;">Beispiel eines Entscheidungsergebnisses</h2>
-                <div class="grid-2 feature-example-grid" style="align-items: start;">
-                    <div class="card">
-                        <h3>Beispiel einer Antwort</h3>
-                        <div class="code-block" style="margin-top: 1rem;">
-                            <code>{
-  "score": 88,
-  "decision": "DO_NOT_PROCEED",
-  "riskColor": "RED",
-  "dataCoverage": "VERIFIED",
-  "confidence": 1.0,
-  "appliedHardRules": [
-    "RULE_PROCEEDINGS_OPENED_MIN_E",
-    "RULE_REPEATED_DECISIONS_IN_PROCEEDINGS_MIN_E"
-  ],
-  "calculatedAt": "2026-04-08T09:14:22Z",
-  "formulaVersion": "v2.1-smb-decision-aligned-score",
-  "decisionModifier": "FORMAL_INSOLVENCY_PROCEEDINGS",
-  "recommendedTerms": "NO_UNSECURED_TRADE_CREDIT",
-  "explanation": {
-    "summary": "PROCEEDINGS_OPENED",
-    "factors": [
-      {
-        "type": "PROCEEDINGS_OPENED",
-        "impact": "HIGH"
-      },
-      {
-        "type": "REPEATED_COURT_DECISIONS",
-        "impact": "HIGH"
-      },
-      {
-        "type": "RECENT_INSOLVENCY_EVENT",
-        "impact": "MEDIUM"
-      }
-    ],
-    "note": null,
-    "matchedCompanies": null
-  }
-}</code>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <h3>Erklärung der Felder</h3>
-                        <p><strong>Decision, Score, Risk Color, Data Coverage:</strong> maschinell auswertbarer Kern
-                            der Entscheidung. Im gezeigten Beispiel steht <code>VERIFIED</code> für eine klare,
-                            belastbare Datengrundlage ohne Mehrdeutigkeit bei der Zuordnung.</p>
-                        <p><strong>Applied Hard Rules:</strong> dokumentiert harte deterministische Regeln, die das
-                            Ergebnis fachlich nach oben begrenzen oder auf Rot eskalieren.</p>
-                        <p><strong>Decision Modifier und Recommended Terms:</strong> zusätzliche fachliche Einordnung
-                            für den Folgeprozess, etwa formale Insolvenzverfahren oder die Empfehlung, nur manuell zu
-                            prüfen beziehungsweise keinen ungesicherten Handelskredit zu gewähren.</p>
-                        <p><strong>Confidence:</strong> relative Stabilität der Einordnung. Im Direct-API-Result kommt
-                            dieser Wert als numerischer Wert im Bereich <code>0.0</code> bis <code>1.0</code>.</p>
-                        <p><strong>Explanation:</strong> deterministische Begründung mit Summary-Code und Faktoren.
-                            <code>note</code> und <code>matchedCompanies</code> bleiben in diesem Beispiel
-                            <code>null</code>, weil der Treffer klar und ohne konkurrierende Unternehmenszuordnung
-                            bewertet wurde.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="section" id="entscheidungsmodell">
+        <section class="section section-alt" id="entscheidungsmodell">
             <div class="container">
                 <div class="text-center" style="max-width: 980px; margin: 0 auto; margin-bottom: 3rem;">
                     <h2>Das HandelScore Entscheidungsmodell</h2>
@@ -441,7 +377,7 @@
             </div>
         </section>
 
-        <section class="section section-alt">
+        <section class="section">
             <div class="container">
                 <div class="text-center" style="max-width: 980px; margin: 0 auto; margin-bottom: 3rem;">
                     <h2>Warum deterministische Entscheidungen statt intransparenter Modelle?</h2>
@@ -463,7 +399,7 @@
             </div>
         </section>
 
-        <section class="section">
+        <section class="section section-alt">
             <div class="container">
                 <div class="text-center" style="margin-bottom: 3rem; max-width: 980px; margin-left: auto; margin-right: auto;">
                     <h2>Häufige Fragen</h2>
@@ -490,7 +426,7 @@
             </div>
         </section>
 
-        <section class="section section-alt">
+        <section class="section">
             <div class="container">
                 <div class="card note-card">
                     <h2>Hinweis zur Einordnung</h2>
@@ -511,7 +447,7 @@
             </div>
         </section>
 
-        <section class="section text-center">
+        <section class="section section-alt text-center">
             <div class="container">
                 <h2 style="margin-bottom: 1rem;">Nächster Schritt</h2>
                 <p style="margin-bottom: 2rem;">Sprechen Sie mit uns über Ihren Anwendungsfall, die Integration und den passenden Einstieg.</p>
